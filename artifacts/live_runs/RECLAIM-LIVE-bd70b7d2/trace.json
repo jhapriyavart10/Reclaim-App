@@ -1,0 +1,31 @@
+{
+  "version": "2.0-live",
+  "run_id": "RECLAIM-LIVE-bd70b7d2",
+  "mission_id": "msn_d0b7e427",
+  "started_at": "2026-09-13T19:41:01.000000+00:00",
+  "completed_at": "2026-09-13T19:41:11.880000+00:00",
+  "duration_seconds": 10.88,
+  "goal": "Investigate and resolve the current RECLAIM demo incident for run RECLAIM-LIVE-bd70b7d2 across GitHub, Slack, and Jira.",
+  "llm_provider": "groq",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "decision_source": "none",
+  "reasoning_status": "FAILED",
+  "note": "Latest live run under strict Decision Integrity. Primary and fallback Groq models hit free-tier daily token quota exhaustion (200k TPD cap). System safely refused fabricated decision and aborted to FAILED.",
+  "policy": "STRICT_LIVE",
+  "final_status": "FAILED",
+  "live_apps": ["github", "slack", "jira"],
+  "simulated_apps": [],
+  "evidence_counts": {
+    "total": 4,
+    "live": 4,
+    "simulated": 0
+  },
+  "action_counts": {
+    "required": 0,
+    "verified": 0,
+    "failed": 0
+  },
+  "executed_actions": [],
+  "verification_events": []
+}

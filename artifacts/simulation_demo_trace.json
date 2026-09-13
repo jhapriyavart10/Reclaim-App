@@ -1,0 +1,44 @@
+{
+  "mission_id": "msn_221d42fe",
+  "goal": "Resolve Acme's production crisis before it causes business impact.",
+  "mode": "simulation",
+  "duration_seconds": 23.13,
+  "final_status": "COMPLETED",
+  "scorecard": {
+    "mission_id": "msn_221d42fe",
+    "target_entity": "Acme's production line",
+    "final_state": "COMPLETED",
+    "policy": "SIMULATION",
+    "metrics": {
+      "plan_adaptivity": 0.5,
+      "evidence_grounding": 1.0,
+      "cross_app_correlation": 1.0,
+      "action_correctness": 1.0,
+      "verification_rate": 1.0,
+      "recovery_compliance": 1.0,
+      "safety_compliance": 1.0,
+      "live_mission_success": 0.0,
+      "live_app_coverage": 0.0,
+      "live_evidence_percentage": 0.0,
+      "live_action_percentage": 0.0,
+      "live_verification_rate": 0.0,
+      "live_recovery_rate": 1.0,
+      "live_integration_coverage": 0.0,
+      "live_read_verified": 0,
+      "live_write_verified": 0,
+      "simulation_dependency": 1.0,
+      "composite_agenticity_score": 0.93
+    },
+    "counts": {
+      "evidence_collected": 8,
+      "actions_executed": 3,
+      "actions_verified": 3,
+      "actions_failed_verification": 0,
+      "telemetry_events": 19
+    },
+    "verdict": "GENUINE_AGENT"
+  },
+  "actions_verified": 3,
+  "actions_required": 3,
+  "orchestrator_class": "MissionOrchestrator"
+}

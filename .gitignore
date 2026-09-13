@@ -1,0 +1,26 @@
+# Secrets & environment
+.env
+.env.local
+*.key
+*.pem
+
+# Python cache & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Database & runtime
+*.db
+*.sqlite3
+audit_logs/
+node_modules/
+dist/

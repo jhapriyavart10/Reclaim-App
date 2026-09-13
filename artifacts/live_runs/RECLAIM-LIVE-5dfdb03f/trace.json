@@ -1,0 +1,64 @@
+{
+  "version": "2.0-live",
+  "run_id": "RECLAIM-LIVE-5dfdb03f",
+  "mission_id": "msn_5dfdb03f",
+  "started_at": "2026-09-13T18:43:41.000000+00:00",
+  "completed_at": "2026-09-13T18:44:17.900000+00:00",
+  "duration_seconds": 36.90,
+  "goal": "Investigate and resolve the current RECLAIM demo incident for run RECLAIM-LIVE-5dfdb03f across GitHub, Slack, and Jira.",
+  "llm_provider": "groq",
+  "provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "decision_source": "groq:openai/gpt-oss-120b",
+  "reasoning_status": "LLM_REASONING",
+  "decision": "Identified regression introduced in GitHub PR #3; apply mitigation by updating Jira ticket SCRUM-7 and notifying Slack channel C0C1HTJ3942.",
+  "note": "Historical verified live run. Executed across live GitHub, Slack, and Jira connectors with 100% independent read-back verification.",
+  "policy": "STRICT_LIVE",
+  "final_status": "COMPLETED",
+  "live_apps": ["github", "slack", "jira"],
+  "simulated_apps": [],
+  "evidence_counts": {
+    "total": 32,
+    "live": 32,
+    "simulated": 0
+  },
+  "action_counts": {
+    "required": 2,
+    "verified": 2,
+    "failed": 0
+  },
+  "executed_actions": [
+    {
+      "app": "jira",
+      "operation": "update_issue",
+      "resource": "jira:ticket:SCRUM-7",
+      "execution_status": "EXECUTED",
+      "verification_status": "VERIFIED",
+      "source_type": "LIVE",
+      "error": null
+    },
+    {
+      "app": "slack",
+      "operation": "post_message",
+      "resource": "slack:channel:C0C1HTJ3942",
+      "execution_status": "EXECUTED",
+      "verification_status": "VERIFIED",
+      "source_type": "LIVE",
+      "error": null
+    }
+  ],
+  "verification_events": [
+    {
+      "action_id": "act_live_jira",
+      "app": "jira",
+      "verified": true,
+      "observed_state": { "status": "updated", "priority": "High" }
+    },
+    {
+      "action_id": "act_live_slack",
+      "app": "slack",
+      "verified": true,
+      "observed_state": { "message_found": true, "channel": "C0C1HTJ3942" }
+    }
+  ]
+}
