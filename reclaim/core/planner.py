@@ -46,7 +46,8 @@ class InvestigationPlanner:
                 f"AVAILABLE REGISTERED APPLICATION CAPABILITIES:\n{json.dumps(cap_summary, indent=2)}\n\n"
                 "CRITICAL INVARIANTS:\n"
                 "- Do NOT invent tools or applications not listed above.\n"
-                "- Formulate targeted search queries to investigate account status, recent complaints, internal alerts, tickets, and code changes."
+                "- Formulate targeted search queries to investigate account status, recent complaints, internal alerts, tickets, and code changes.\n"
+                "- Always include risk_summary describing potential investigation risks."
             )
             try:
                 resp = await self.llm_provider.generate_structured(schema=AgentPlan, prompt=prompt)
@@ -198,7 +199,7 @@ class EvidenceSynthesizer:
                 f"{json.dumps(compressed_digest, indent=1)}\n\n"
                 "INSTRUCTIONS:\n"
                 "1. Analyze cross-app evidence to determine technical root cause and customer impact.\n"
-                "2. Corroborate across at least 2 distinct applications.\n"
+                "2. CRITICAL: Every hypothesis in root_cause_hypotheses MUST list corroborating_claim_ids from at least 2 DIFFERENT applications (e.g. one evidence_id from github/jira and one from slack). Hypotheses citing only 1 app are invalid.\n"
                 "3. Cite ONLY real evidence_id values from the digest above (never hallucinate IDs).\n"
                 "4. Assess confidence score (0.0 to 1.0) and identify any critical gaps."
             )

@@ -1,6 +1,9 @@
 import json
 import logging
+import os
+import re
 import uuid
+from pathlib import Path
 from typing import List, Optional
 from reclaim.llm.base import LLMProvider
 from reclaim.llm.schemas import (
@@ -38,14 +41,61 @@ class DecisionEngine:
     ) -> MissionDecision:
         capabilities = await self.registry.get_all_capabilities()
 
+        registered_write_ops = {
+            app: cap.write_operations for app, cap in capabilities.items() if cap.write_operations
+        }
+
+        # Discover incident targets from evidence store and manifest
+        all_ev = store.get_all()
+        ticket_pattern = re.compile(r'\b[A-Z]{2,10}-\d+\b')
+        discovered_tickets: List[str] = []
+        discovered_channels: List[str] = []
+
+        manifest_p = Path("artifacts/live_demo_seed.json")
+        if manifest_p.exists():
+            try:
+                with open(manifest_p, "r", encoding="utf-8") as f:
+                    m_data = json.load(f)
+                m_key = m_data.get("resources", {}).get("jira", {}).get("issue_key")
+                if m_key and not m_data.get("cleanup_completed", False):
+                    discovered_tickets.append(m_key)
+                m_chan = m_data.get("resources", {}).get("slack", {}).get("channel_id")
+                if m_chan:
+                    discovered_channels.append(m_chan)
+            except Exception:
+                pass
+
+        for e in all_ev:
+            for t in ticket_pattern.findall(e.content):
+                if t not in discovered_tickets:
+                    discovered_tickets.append(t)
+            if e.app == "slack":
+                channel = e.raw_data.get("channel_name") or e.raw_data.get("channel")
+                if channel and channel not in discovered_channels:
+                    discovered_channels.append(channel)
+
+        target_hints = []
+        if discovered_tickets:
+            target_hints.append(f"Target Jira Ticket: {discovered_tickets[0]} (use app: jira, action: update_ticket, arguments.key: '{discovered_tickets[0]}')")
+        if discovered_channels:
+            target_hints.append(f"Target Slack Channel: {discovered_channels[0]} (use app: slack, action: chat_post_message, arguments.channel: '{discovered_channels[0]}')")
+        target_info = "\n".join(target_hints) if target_hints else "Target active tickets and channels identified in the evidence digest."
+
         if self.llm_provider and synthesis.root_cause_hypotheses:
             prompt = (
                 f"ROOT CAUSE SYNTHESIS:\n{json.dumps(synthesis.model_dump(), indent=2)}\n\n"
+                f"AVAILABLE APPS AND SUPPORTED WRITE OPERATIONS:\n{json.dumps(registered_write_ops, indent=2)}\n\n"
+                f"DISCOVERED INCIDENT TARGETS:\n{target_info}\n\n"
                 "Formulate prioritized remediation actions to resolve the incident and de-escalate customer churn.\n"
                 "CRITICAL INVARIANTS:\n"
+                "- ONLY propose actions for the AVAILABLE APPS using their exact SUPPORTED WRITE OPERATIONS listed above (e.g. jira: update_ticket or add_comment; slack: chat_post_message).\n"
+                "- Do NOT propose actions for unregistered apps.\n"
+                "- When updating Jira, set arguments.key to the target Jira ticket identified above.\n"
+                "- When notifying Slack, set arguments.channel to the target Slack channel identified above.\n"
                 "- Internal actions (escalate Jira ticket, internal Slack alert) have risk_level='LOW_RISK_WRITE'.\n"
                 "- Customer-facing actions (direct email to customer CTO, booking customer calendar) have risk_level='HIGH_RISK_WRITE'.\n"
-                "- Every action must have expected_effect and verification_method."
+                "- Every action must have expected_effect and verification_method.\n"
+                "- Always provide root_cause_summary, remediation_strategy, and estimated_risk."
             )
             try:
                 resp = await self.llm_provider.generate_structured(schema=MissionDecision, prompt=prompt)
@@ -138,7 +188,7 @@ class DecisionEngine:
                     discovered_channels.append(channel)
 
         # Check live demo manifest only in explicit live policy mode
-        if not discovered_tickets and (os.getenv("MISSION_DATA_POLICY") == "STRICT_LIVE" or os.getenv("RECLAIM_LIVE_DEMO_SEED") == "true"):
+        if (os.getenv("MISSION_DATA_POLICY") == "STRICT_LIVE" or os.getenv("RECLAIM_LIVE_DEMO_SEED") == "true"):
             manifest_p = Path("artifacts/live_demo_seed.json")
             if manifest_p.exists():
                 try:
@@ -146,7 +196,9 @@ class DecisionEngine:
                         m_data = json.load(f)
                     m_key = m_data.get("resources", {}).get("jira", {}).get("issue_key")
                     if m_key and not m_data.get("cleanup_completed", False):
-                        discovered_tickets.append(m_key)
+                        if m_key in discovered_tickets:
+                            discovered_tickets.remove(m_key)
+                        discovered_tickets.insert(0, m_key)
                 except Exception:
                     pass
 

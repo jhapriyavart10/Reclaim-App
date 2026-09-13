@@ -1,0 +1,984 @@
+{
+  "version": "2.0-live",
+  "run_id": "RECLAIM-LIVE-20260913204032-b3e9e2",
+  "mission_id": "msn_00a07ad1",
+  "started_at": "2026-09-13T20:40:40.105648+00:00",
+  "completed_at": "2026-09-13T20:41:04.054779+00:00",
+  "goal": "Investigate and resolve the current RECLAIM demo incident for run RECLAIM-LIVE-20260913204032-b3e9e2 across GitHub, Slack, and Jira.",
+  "llm_provider": "groq",
+  "model": "openai/gpt-oss-120b",
+  "decision_source": "groq:openai/gpt-oss-20b",
+  "reasoning_status": "LLM_REASONING",
+  "llm_traces": [
+    {
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "request_id": "req_01m2e80ambe4gtb7q7y0padc7h",
+      "status": "SUCCESS",
+      "status_code": 200,
+      "latency_ms": 2378.7612000014633,
+      "retry_count": 0,
+      "reasoning_status": "LLM_REASONING",
+      "decision_source": "groq:openai/gpt-oss-120b",
+      "validation_result": "PASS",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "estimated_input_tokens": 851,
+      "estimated_output_tokens": 600,
+      "rate_limit_classification": "NONE",
+      "rate_limit_headers": {
+        "retry-after": "",
+        "x-ratelimit-limit-requests": "1000",
+        "x-ratelimit-remaining-requests": "983",
+        "x-ratelimit-limit-tokens": "8000",
+        "x-ratelimit-remaining-tokens": "5649",
+        "x-ratelimit-reset-requests": "24m28.8s",
+        "x-ratelimit-reset-tokens": "17.632s"
+      }
+    },
+    {
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "request_id": "req_01m2e80cx0epn9vnwhaaztagd8",
+      "status": "SUCCESS",
+      "status_code": 200,
+      "latency_ms": 3861.542600003304,
+      "retry_count": 0,
+      "reasoning_status": "LLM_REASONING",
+      "decision_source": "groq:openai/gpt-oss-120b",
+      "validation_result": "PASS",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "estimated_input_tokens": 1866,
+      "estimated_output_tokens": 1290,
+      "rate_limit_classification": "NONE",
+      "rate_limit_headers": {
+        "retry-after": "",
+        "x-ratelimit-limit-requests": "1000",
+        "x-ratelimit-remaining-requests": "982",
+        "x-ratelimit-limit-tokens": "8000",
+        "x-ratelimit-remaining-tokens": "3157",
+        "x-ratelimit-reset-requests": "25m55.199s",
+        "x-ratelimit-reset-tokens": "36.322s"
+      }
+    },
+    {
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "request_id": "req_01m2e80nh6erb92bwx2528pgzs",
+      "status": "SUCCESS",
+      "status_code": 200,
+      "latency_ms": 3161.4444999868283,
+      "retry_count": 0,
+      "reasoning_status": "LLM_REASONING",
+      "decision_source": "groq:openai/gpt-oss-120b",
+      "validation_result": "PASS",
+      "fallback_used": false,
+      "fallback_reason": null,
+      "estimated_input_tokens": 2130,
+      "estimated_output_tokens": 1027,
+      "rate_limit_classification": "NONE",
+      "rate_limit_headers": {
+        "retry-after": "",
+        "x-ratelimit-limit-requests": "1000",
+        "x-ratelimit-remaining-requests": "981",
+        "x-ratelimit-limit-tokens": "8000",
+        "x-ratelimit-remaining-tokens": "915",
+        "x-ratelimit-reset-requests": "27m21.6s",
+        "x-ratelimit-reset-tokens": "53.137s"
+      }
+    },
+    {
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "request_id": "req_01m2e80rmbe11bjbkdzdpe7kvc",
+      "status": "429_RATE_LIMIT",
+      "status_code": 429,
+      "latency_ms": 698.4541999991052,
+      "retry_count": 0,
+      "reasoning_status": "DEGRADED_REASONING",
+      "decision_source": "groq:openai/gpt-oss-120b",
+      "validation_result": "SKIPPED",
+      "fallback_used": false,
+      "fallback_reason": "RATE_LIMIT_TOKEN",
+      "estimated_input_tokens": 3839,
+      "estimated_output_tokens": 0,
+      "rate_limit_classification": "RATE_LIMIT_TOKEN",
+      "rate_limit_headers": {
+        "retry-after": "35",
+        "x-ratelimit-limit-requests": "1000",
+        "x-ratelimit-remaining-requests": "981",
+        "x-ratelimit-limit-tokens": "8000",
+        "x-ratelimit-remaining-tokens": "2146",
+        "x-ratelimit-reset-requests": "27m21.6s",
+        "x-ratelimit-reset-tokens": "43.905s"
+      }
+    },
+    {
+      "provider": "groq",
+      "model": "openai/gpt-oss-20b",
+      "request_id": "req_01m2e80sbye72vkgbg8g8dphyh",
+      "status": "SUCCESS",
+      "status_code": 200,
+      "latency_ms": 4857.76579999947,
+      "retry_count": 0,
+      "reasoning_status": "LLM_REASONING",
+      "decision_source": "groq:openai/gpt-oss-20b",
+      "validation_result": "PASS",
+      "fallback_used": true,
+      "fallback_reason": "rate_limit_failover",
+      "estimated_input_tokens": 5256,
+      "estimated_output_tokens": 3081,
+      "rate_limit_classification": "NONE",
+      "rate_limit_headers": {
+        "retry-after": "",
+        "x-ratelimit-limit-requests": "1000",
+        "x-ratelimit-remaining-requests": "991",
+        "x-ratelimit-limit-tokens": "8000",
+        "x-ratelimit-remaining-tokens": "436",
+        "x-ratelimit-reset-requests": "12m57.599s",
+        "x-ratelimit-reset-tokens": "56.73s"
+      }
+    }
+  ],
+  "llm_call_count": 0,
+  "duration_seconds": 23.95,
+  "policy": "STRICT_LIVE",
+  "final_status": "FAILED",
+  "live_apps": [
+    "github",
+    "slack",
+    "jira"
+  ],
+  "simulated_apps": [],
+  "evidence_counts": {
+    "total": 3,
+    "live": 3,
+    "simulated": 0
+  },
+  "action_counts": {
+    "required": 3,
+    "verified": 1,
+    "failed": 2
+  },
+  "scorecard": {
+    "mission_id": "msn_00a07ad1",
+    "target_entity": "RECLAIM demo incident (run RECLAIM-LIVE-20260913204032-b3e9e2)",
+    "final_state": "FAILED",
+    "policy": "STRICT_LIVE",
+    "metrics": {
+      "plan_adaptivity": 0.5,
+      "evidence_grounding": 1.0,
+      "cross_app_correlation": 0.85,
+      "action_correctness": 0.0,
+      "verification_rate": 0.33,
+      "recovery_compliance": 0.0,
+      "safety_compliance": 1.0,
+      "live_mission_success": 0.0,
+      "live_app_coverage": 0.67,
+      "live_evidence_percentage": 1.0,
+      "live_action_percentage": 1.0,
+      "live_verification_rate": 0.33,
+      "live_recovery_rate": 0.0,
+      "live_integration_coverage": 0.67,
+      "live_read_verified": 3,
+      "live_write_verified": 1,
+      "simulation_dependency": 0.0,
+      "composite_agenticity_score": 0.55
+    },
+    "counts": {
+      "evidence_collected": 3,
+      "actions_executed": 3,
+      "actions_verified": 1,
+      "actions_failed_verification": 2,
+      "telemetry_events": 20
+    },
+    "verdict": "UNVERIFIED_ACTIONS_REMAIN"
+  },
+  "capabilities": {
+    "github": {
+      "app": "github",
+      "source_type": "LIVE",
+      "availability": "AVAILABLE",
+      "authentication_status": "AUTHENTICATED",
+      "read_operations": [
+        "search_issues",
+        "search_commits",
+        "get_pull_request",
+        "get_issue"
+      ],
+      "write_operations": [
+        "create_issue",
+        "create_comment"
+      ],
+      "verification_operations": [
+        "verify_issue_exists",
+        "verify_comment_exists"
+      ],
+      "risk_policy": {
+        "search_issues": "READ_ONLY",
+        "search_commits": "READ_ONLY",
+        "get_pull_request": "READ_ONLY",
+        "create_issue": "LOW_RISK_WRITE",
+        "create_comment": "LOW_RISK_WRITE"
+      },
+      "connector_status": "AVAILABLE"
+    },
+    "slack": {
+      "app": "slack",
+      "source_type": "LIVE",
+      "availability": "AVAILABLE",
+      "authentication_status": "AUTHENTICATED",
+      "read_operations": [
+        "conversations_history",
+        "conversations_list",
+        "search_messages"
+      ],
+      "write_operations": [
+        "chat_post_message"
+      ],
+      "verification_operations": [
+        "verify_message_in_history"
+      ],
+      "risk_policy": {
+        "conversations_history": "READ_ONLY",
+        "conversations_list": "READ_ONLY",
+        "chat_post_message": "LOW_RISK_WRITE"
+      },
+      "connector_status": "AVAILABLE"
+    },
+    "jira": {
+      "app": "jira",
+      "source_type": "LIVE",
+      "availability": "AVAILABLE",
+      "authentication_status": "AUTHENTICATED",
+      "read_operations": [
+        "search_tickets",
+        "get_ticket"
+      ],
+      "write_operations": [
+        "update_ticket",
+        "add_comment"
+      ],
+      "verification_operations": [
+        "verify_ticket_fields"
+      ],
+      "risk_policy": {
+        "search_tickets": "READ_ONLY",
+        "get_ticket": "READ_ONLY",
+        "update_ticket": "LOW_RISK_WRITE",
+        "add_comment": "LOW_RISK_WRITE"
+      },
+      "connector_status": "AVAILABLE"
+    }
+  },
+  "live_evidence": [
+    {
+      "evidence_id": "ev_github_01",
+      "app": "github",
+      "source_type": "LIVE",
+      "resource_reference": "github:issue:8",
+      "timestamp": "2026-09-13T20:40:33Z",
+      "author": "jhapriyavart10",
+      "content": "GitHub #8: [RECLAIM-LIVE][RUN:RECLAIM-LIVE-20260913204032-b3e9e2] Regression candidate: v2.4.1 serializer payload schema mismatch. Author: jhapriyavart10, State: open. Excerpt: Automated incident test evidence for RECLAIM-LIVE-20260913204032-b3e9e2.\n\n**Technical Detail**: Commit hash introduces strict marshmallow/pydantic sch",
+      "entities": [
+        "TICKET:LIVE-20260913204032"
+      ],
+      "relevance": 1.0,
+      "retrieved_at": "2026-09-13T20:40:47Z",
+      "raw_data": {
+        "url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/issues/8",
+        "repository_url": "https://api.github.com/repos/jhapriyavart10/reclaim-test",
+        "labels_url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/issues/8/labels{/name}",
+        "comments_url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/issues/8/comments",
+        "events_url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/issues/8/events",
+        "html_url": "https://github.com/jhapriyavart10/reclaim-test/issues/8",
+        "id": 5442648565,
+        "node_id": "I_kwDOUZS25s8AAAABRGg59Q",
+        "number": 8,
+        "title": "[RECLAIM-LIVE][RUN:RECLAIM-LIVE-20260913204032-b3e9e2] Regression candidate: v2.4.1 serializer payload schema mismatch",
+        "user": {
+          "login": "jhapriyavart10",
+          "id": 149286986,
+          "node_id": "U_kgDOCOXwSg",
+          "avatar_url": "https://avatars.githubusercontent.com/u/149286986?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/jhapriyavart10",
+          "html_url": "https://github.com/jhapriyavart10",
+          "followers_url": "https://api.github.com/users/jhapriyavart10/followers",
+          "following_url": "https://api.github.com/users/jhapriyavart10/following{/other_user}",
+          "gists_url": "https://api.github.com/users/jhapriyavart10/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/jhapriyavart10/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/jhapriyavart10/subscriptions",
+          "organizations_url": "https://api.github.com/users/jhapriyavart10/orgs",
+          "repos_url": "https://api.github.com/users/jhapriyavart10/repos",
+          "events_url": "https://api.github.com/users/jhapriyavart10/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/jhapriyavart10/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "labels": [
+          {
+            "id": 12179569125,
+            "node_id": "LA_kwDOUZS25s8AAAAC1fV55Q",
+            "url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/labels/reclaim",
+            "name": "reclaim",
+            "color": "ededed",
+            "default": false,
+            "description": null,
+            "archived_at": null,
+            "archived_by": null
+          },
+          {
+            "id": 12179569127,
+            "node_id": "LA_kwDOUZS25s8AAAAC1fV55w",
+            "url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/labels/test",
+            "name": "test",
+            "color": "ededed",
+            "default": false,
+            "description": null,
+            "archived_at": null,
+            "archived_by": null
+          },
+          {
+            "id": 12179658992,
+            "node_id": "LA_kwDOUZS25s8AAAAC1fbY8A",
+            "url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/labels/regression",
+            "name": "regression",
+            "color": "ededed",
+            "default": false,
+            "description": null,
+            "archived_at": null,
+            "archived_by": null
+          }
+        ],
+        "state": "open",
+        "locked": false,
+        "assignees": [],
+        "milestone": null,
+        "comments": 0,
+        "created_at": "2026-09-13T20:40:33Z",
+        "updated_at": "2026-09-13T20:40:33Z",
+        "closed_at": null,
+        "assignee": null,
+        "author_association": "OWNER",
+        "active_lock_reason": null,
+        "sub_issues_summary": {
+          "total": 0,
+          "completed": 0,
+          "percent_completed": 0
+        },
+        "issue_dependencies_summary": {
+          "blocked_by": 0,
+          "total_blocked_by": 0,
+          "blocking": 0,
+          "total_blocking": 0
+        },
+        "body": "Automated incident test evidence for RECLAIM-LIVE-20260913204032-b3e9e2.\n\n**Technical Detail**: Commit hash introduces strict marshmallow/pydantic schema validation on `/v2/data-sync` endpoint. Payloads containing extra legacy metadata fields now raise `ValidationError` and return HTTP 500 to enterprise clients.",
+        "reactions": {
+          "url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/issues/8/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/issues/8/timeline",
+        "performed_via_github_app": null,
+        "state_reason": null,
+        "pinned_comment": null,
+        "score": 1.0
+      },
+      "connector_status": "LIVE_VERIFIED"
+    },
+    {
+      "evidence_id": "ev_github_02",
+      "app": "github",
+      "source_type": "LIVE",
+      "resource_reference": "github:issue:8",
+      "timestamp": "2026-09-13T20:40:33Z",
+      "author": "jhapriyavart10",
+      "content": "GitHub #8: [RECLAIM-LIVE][RUN:RECLAIM-LIVE-20260913204032-b3e9e2] Regression candidate: v2.4.1 serializer payload schema mismatch. Author: jhapriyavart10, State: open. Excerpt: Automated incident test evidence for RECLAIM-LIVE-20260913204032-b3e9e2.\n\n**Technical Detail**: Commit hash introduces strict marshmallow/pydantic sch",
+      "entities": [
+        "TICKET:LIVE-20260913204032"
+      ],
+      "relevance": 1.0,
+      "retrieved_at": "2026-09-13T20:40:49Z",
+      "raw_data": {
+        "url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/issues/8",
+        "repository_url": "https://api.github.com/repos/jhapriyavart10/reclaim-test",
+        "labels_url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/issues/8/labels{/name}",
+        "comments_url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/issues/8/comments",
+        "events_url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/issues/8/events",
+        "html_url": "https://github.com/jhapriyavart10/reclaim-test/issues/8",
+        "id": 5442648565,
+        "node_id": "I_kwDOUZS25s8AAAABRGg59Q",
+        "number": 8,
+        "title": "[RECLAIM-LIVE][RUN:RECLAIM-LIVE-20260913204032-b3e9e2] Regression candidate: v2.4.1 serializer payload schema mismatch",
+        "user": {
+          "login": "jhapriyavart10",
+          "id": 149286986,
+          "node_id": "U_kgDOCOXwSg",
+          "avatar_url": "https://avatars.githubusercontent.com/u/149286986?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/jhapriyavart10",
+          "html_url": "https://github.com/jhapriyavart10",
+          "followers_url": "https://api.github.com/users/jhapriyavart10/followers",
+          "following_url": "https://api.github.com/users/jhapriyavart10/following{/other_user}",
+          "gists_url": "https://api.github.com/users/jhapriyavart10/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/jhapriyavart10/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/jhapriyavart10/subscriptions",
+          "organizations_url": "https://api.github.com/users/jhapriyavart10/orgs",
+          "repos_url": "https://api.github.com/users/jhapriyavart10/repos",
+          "events_url": "https://api.github.com/users/jhapriyavart10/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/jhapriyavart10/received_events",
+          "type": "User",
+          "user_view_type": "public",
+          "site_admin": false
+        },
+        "labels": [
+          {
+            "id": 12179569125,
+            "node_id": "LA_kwDOUZS25s8AAAAC1fV55Q",
+            "url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/labels/reclaim",
+            "name": "reclaim",
+            "color": "ededed",
+            "default": false,
+            "description": null,
+            "archived_at": null,
+            "archived_by": null
+          },
+          {
+            "id": 12179569127,
+            "node_id": "LA_kwDOUZS25s8AAAAC1fV55w",
+            "url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/labels/test",
+            "name": "test",
+            "color": "ededed",
+            "default": false,
+            "description": null,
+            "archived_at": null,
+            "archived_by": null
+          },
+          {
+            "id": 12179658992,
+            "node_id": "LA_kwDOUZS25s8AAAAC1fbY8A",
+            "url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/labels/regression",
+            "name": "regression",
+            "color": "ededed",
+            "default": false,
+            "description": null,
+            "archived_at": null,
+            "archived_by": null
+          }
+        ],
+        "state": "open",
+        "locked": false,
+        "assignees": [],
+        "milestone": null,
+        "comments": 0,
+        "created_at": "2026-09-13T20:40:33Z",
+        "updated_at": "2026-09-13T20:40:33Z",
+        "closed_at": null,
+        "assignee": null,
+        "author_association": "OWNER",
+        "active_lock_reason": null,
+        "sub_issues_summary": {
+          "total": 0,
+          "completed": 0,
+          "percent_completed": 0
+        },
+        "issue_dependencies_summary": {
+          "blocked_by": 0,
+          "total_blocked_by": 0,
+          "blocking": 0,
+          "total_blocking": 0
+        },
+        "body": "Automated incident test evidence for RECLAIM-LIVE-20260913204032-b3e9e2.\n\n**Technical Detail**: Commit hash introduces strict marshmallow/pydantic schema validation on `/v2/data-sync` endpoint. Payloads containing extra legacy metadata fields now raise `ValidationError` and return HTTP 500 to enterprise clients.",
+        "reactions": {
+          "url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/issues/8/reactions",
+          "total_count": 0,
+          "+1": 0,
+          "-1": 0,
+          "laugh": 0,
+          "hooray": 0,
+          "confused": 0,
+          "heart": 0,
+          "rocket": 0,
+          "eyes": 0
+        },
+        "timeline_url": "https://api.github.com/repos/jhapriyavart10/reclaim-test/issues/8/timeline",
+        "performed_via_github_app": null,
+        "state_reason": null,
+        "pinned_comment": null,
+        "score": 1.0
+      },
+      "connector_status": "LIVE_VERIFIED"
+    },
+    {
+      "evidence_id": "ev_slack_03",
+      "app": "slack",
+      "source_type": "LIVE",
+      "resource_reference": "slack:msg:1789332035.546129",
+      "timestamp": "1789332035.546129",
+      "author": "U0C2CA2GGP2",
+      "content": "Slack message in #channel by U0C2CA2GGP2: [RECLAIM-LIVE][RUN:RECLAIM-LIVE-20260913204032-b3e9e2] :rotating_light: P1 Incident Alert: Acme Corp telemetry reports 500 errors on /v2/data-sync endpoint after recent serializer deployment.",
+      "entities": [
+        "TICKET:LIVE-20260913204032",
+        "ENDPOINT:/v2/data-sync",
+        "CUSTOMER:Acme Corp"
+      ],
+      "relevance": 1.0,
+      "retrieved_at": "2026-09-13T20:40:50Z",
+      "raw_data": {
+        "user": "U0C2CA2GGP2",
+        "type": "message",
+        "ts": "1789332035.546129",
+        "bot_id": "B0C1BN2VBV1",
+        "app_id": "A0C1KSN9ZND",
+        "text": "[RECLAIM-LIVE][RUN:RECLAIM-LIVE-20260913204032-b3e9e2] :rotating_light: P1 Incident Alert: Acme Corp telemetry reports 500 errors on /v2/data-sync endpoint after recent serializer deployment.",
+        "team": "T0C1BMLLC2F",
+        "bot_profile": {
+          "id": "B0C1BN2VBV1",
+          "deleted": false,
+          "name": "RECLAIM Agent",
+          "updated": 1789322824,
+          "app_id": "A0C1KSN9ZND",
+          "user_id": "U0C2CA2GGP2",
+          "icons": {
+            "image_36": "https://a.slack-edge.com/80588/img/plugins/app/bot_36.png",
+            "image_48": "https://a.slack-edge.com/80588/img/plugins/app/bot_48.png",
+            "image_72": "https://a.slack-edge.com/80588/img/plugins/app/service_72.png"
+          },
+          "team_id": "T0C1BMLLC2F"
+        },
+        "blocks": [
+          {
+            "type": "rich_text",
+            "block_id": "xcj",
+            "elements": [
+              {
+                "type": "rich_text_section",
+                "elements": [
+                  {
+                    "type": "text",
+                    "text": "[RECLAIM-LIVE][RUN:RECLAIM-LIVE-20260913204032-b3e9e2] "
+                  },
+                  {
+                    "type": "emoji",
+                    "name": "rotating_light",
+                    "unicode": "1f6a8"
+                  },
+                  {
+                    "type": "text",
+                    "text": " P1 Incident Alert: Acme Corp telemetry reports 500 errors on /v2/data-sync endpoint after recent serializer deployment."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "connector_status": "LIVE_VERIFIED"
+    }
+  ],
+  "hypotheses": [],
+  "executed_actions": [
+    {
+      "app": "slack",
+      "operation": "chat_postMessage",
+      "resource": "slack:channel:C0C1HTJ3942:ts:1789332060.572209",
+      "execution_status": "EXECUTED",
+      "verification_status": "VERIFIED",
+      "source_type": "LIVE",
+      "error": null
+    },
+    {
+      "app": "github",
+      "operation": "create_create_issue",
+      "resource": "github:None:failed",
+      "execution_status": "FAILED",
+      "verification_status": "FAILED_VERIFICATION",
+      "source_type": "LIVE",
+      "error": "Live credentials or repo missing"
+    },
+    {
+      "app": "jira",
+      "operation": "update_issue",
+      "resource": "jira:ticket:RECLAIM-123",
+      "execution_status": "FAILED",
+      "verification_status": "FAILED_VERIFICATION",
+      "source_type": "LIVE",
+      "error": "{\"errorMessages\":[\"Issue does not exist or you do not have permission to see it.\"],\"errors\":{}}"
+    }
+  ],
+  "verification_events": [
+    {
+      "action_id": "act_slack_alert_01",
+      "verified": true,
+      "verification_method": "read_check",
+      "observed_state": {
+        "verified": true,
+        "observed_message": {
+          "user": "U0C2CA2GGP2",
+          "type": "message",
+          "ts": "1789332060.572209",
+          "bot_id": "B0C1BN2VBV1",
+          "app_id": "A0C1KSN9ZND",
+          "text": "Serializer payload schema mismatch detected in v2.4.1. Investigate immediately.",
+          "team": "T0C1BMLLC2F",
+          "bot_profile": {
+            "id": "B0C1BN2VBV1",
+            "deleted": false,
+            "name": "RECLAIM Agent",
+            "updated": 1789322824,
+            "app_id": "A0C1KSN9ZND",
+            "user_id": "U0C2CA2GGP2",
+            "icons": {
+              "image_36": "https://a.slack-edge.com/80588/img/plugins/app/bot_36.png",
+              "image_48": "https://a.slack-edge.com/80588/img/plugins/app/bot_48.png",
+              "image_72": "https://a.slack-edge.com/80588/img/plugins/app/service_72.png"
+            },
+            "team_id": "T0C1BMLLC2F"
+          },
+          "blocks": [
+            {
+              "type": "rich_text",
+              "block_id": "ODN",
+              "elements": [
+                {
+                  "type": "rich_text_section",
+                  "elements": [
+                    {
+                      "type": "text",
+                      "text": "Serializer payload schema mismatch detected in v2.4.1. Investigate immediately."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "discrepancy": null,
+      "details": "Post-state verified against expected effect."
+    },
+    {
+      "action_id": "act_github_issue_01",
+      "verified": false,
+      "verification_method": "read_check",
+      "observed_state": {},
+      "discrepancy": null,
+      "details": "Verification failed: Verification failed: Issue not found on GitHub"
+    },
+    {
+      "action_id": "act_jira_update_01",
+      "verified": false,
+      "verification_method": "read_check",
+      "observed_state": {},
+      "discrepancy": null,
+      "details": "Verification failed: Verification failed: Ticket not found on Jira"
+    }
+  ],
+  "telemetry_events": [
+    {
+      "event_id": "evt_78f99c96",
+      "event_type": "MISSION_STARTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:40:40Z",
+      "state": "GOAL_RECEIVED",
+      "step_id": null,
+      "app": null,
+      "source_type": null,
+      "summary": "Initiating autonomous business rescue mission: 'Investigate and resolve the current RECLAIM demo incident for run RECLAIM-LIVE-20260913204032-b3e9e2 across GitHub, Slack, and Jira.'. Policy=STRICT_LIVE",
+      "details": {}
+    },
+    {
+      "event_id": "evt_a1d4af73",
+      "event_type": "PLAN_CREATED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:40:46Z",
+      "state": "PLANNING",
+      "step_id": null,
+      "app": null,
+      "source_type": null,
+      "summary": "Created investigation plan with 5 targeted queries across apps.",
+      "details": {}
+    },
+    {
+      "event_id": "evt_41f28fcf",
+      "event_type": "TOOL_REQUESTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:40:46Z",
+      "state": "INVESTIGATING",
+      "step_id": null,
+      "app": "github",
+      "source_type": null,
+      "summary": "Querying GITHUB (inv_github_01): Identify GitHub issues and pull requests that reference the RECLAIM demo incident",
+      "details": {
+        "params": {
+          "query": "RECLAIM-LIVE-20260913204032-b3e9e2",
+          "channel": null,
+          "issue_key": null,
+          "limit": 20
+        }
+      }
+    },
+    {
+      "event_id": "evt_5dd62514",
+      "event_type": "TOOL_REQUESTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:40:47Z",
+      "state": "INVESTIGATING",
+      "step_id": null,
+      "app": "github",
+      "source_type": null,
+      "summary": "Querying GITHUB (inv_github_02): Search recent commits that may contain errors related to the RECLAIM demo run",
+      "details": {
+        "params": {
+          "query": "RECLAIM demo error",
+          "channel": null,
+          "issue_key": null,
+          "limit": 20
+        }
+      }
+    },
+    {
+      "event_id": "evt_e6a9b657",
+      "event_type": "TOOL_REQUESTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:40:48Z",
+      "state": "INVESTIGATING",
+      "step_id": null,
+      "app": "github",
+      "source_type": null,
+      "summary": "Querying GITHUB (inv_github_03): Retrieve any error logs or stack traces attached to GitHub issues or comments for the incident",
+      "details": {
+        "params": {
+          "query": "error OR stacktrace RECLAIM-LIVE-20260913204032-b3e9e2",
+          "channel": null,
+          "issue_key": null,
+          "limit": 50
+        }
+      }
+    },
+    {
+      "event_id": "evt_a1923942",
+      "event_type": "TOOL_REQUESTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:40:49Z",
+      "state": "INVESTIGATING",
+      "step_id": null,
+      "app": "slack",
+      "source_type": null,
+      "summary": "Querying SLACK (inv_slack_01): Collect recent Slack messages and alerts about the RECLAIM demo incident",
+      "details": {
+        "params": {
+          "query": "RECLAIM-LIVE-20260913204032-b3e9e2",
+          "channel": "#reclaim-alerts",
+          "issue_key": null,
+          "limit": 50
+        }
+      }
+    },
+    {
+      "event_id": "evt_1183471b",
+      "event_type": "TOOL_REQUESTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:40:50Z",
+      "state": "INVESTIGATING",
+      "step_id": null,
+      "app": "jira",
+      "source_type": null,
+      "summary": "Querying JIRA (inv_jira_01): Search Jira for tickets linked to the RECLAIM demo incident",
+      "details": {
+        "params": {
+          "query": "RECLAIM demo",
+          "channel": null,
+          "issue_key": null,
+          "limit": 20
+        }
+      }
+    },
+    {
+      "event_id": "evt_3b9584b2",
+      "event_type": "HYPOTHESIS_CREATED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:40:54Z",
+      "state": "EVIDENCE_SYNTHESIS",
+      "step_id": null,
+      "app": null,
+      "source_type": null,
+      "summary": "Evidence synthesized: 1 root-cause hypotheses formed.",
+      "details": {
+        "confidence": 0.85,
+        "hypotheses": [
+          "Serializer payload schema mismatch in v2.4.1 causing cross\u2011app integration failures"
+        ]
+      }
+    },
+    {
+      "event_id": "evt_60ca04bb",
+      "event_type": "DECISION_CREATED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:41:00Z",
+      "state": "DECISION",
+      "step_id": null,
+      "app": null,
+      "source_type": null,
+      "summary": "Decision formulated: 3 remediation actions prioritized (3 mandatory). Source: groq:openai/gpt-oss-20b",
+      "details": {
+        "reasoning_status": "LLM_REASONING",
+        "decision_source": "groq:openai/gpt-oss-20b",
+        "model": "openai/gpt-oss-20b",
+        "request_id": "req_01m2e80sbye72vkgbg8g8dphyh",
+        "fallback_used": true,
+        "action_count": 3
+      }
+    },
+    {
+      "event_id": "evt_069eb43a",
+      "event_type": "APPROVAL_REQUESTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:41:00Z",
+      "state": "WAITING_FOR_APPROVAL",
+      "step_id": null,
+      "app": "slack",
+      "source_type": null,
+      "summary": "Authorization required: SLACK chat_post_message for external",
+      "details": {
+        "token": "nonce_ccd8b6ddaa"
+      }
+    },
+    {
+      "event_id": "evt_7dea3419",
+      "event_type": "APPROVAL_GRANTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:41:00Z",
+      "state": "WAITING_FOR_APPROVAL",
+      "step_id": null,
+      "app": null,
+      "source_type": null,
+      "summary": "Human authorization granted for 'act_slack_alert_01'.",
+      "details": {}
+    },
+    {
+      "event_id": "evt_7de3293f",
+      "event_type": "ACTION_EXECUTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:41:01Z",
+      "state": "EXECUTING",
+      "step_id": null,
+      "app": "slack",
+      "source_type": "LIVE",
+      "summary": "Executed SLACK chat_post_message (Status: EXECUTED).",
+      "details": {}
+    },
+    {
+      "event_id": "evt_90425bde",
+      "event_type": "VERIFICATION_PASSED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:41:02Z",
+      "state": "VERIFYING",
+      "step_id": null,
+      "app": "slack",
+      "source_type": null,
+      "summary": "Verification successful for SLACK chat_post_message.",
+      "details": {}
+    },
+    {
+      "event_id": "evt_d62e292f",
+      "event_type": "ACTION_EXECUTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:41:02Z",
+      "state": "EXECUTING",
+      "step_id": null,
+      "app": "github",
+      "source_type": "LIVE",
+      "summary": "Executed GITHUB create_issue (Status: FAILED).",
+      "details": {}
+    },
+    {
+      "event_id": "evt_c3d41033",
+      "event_type": "VERIFICATION_FAILED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:41:02Z",
+      "state": "VERIFYING",
+      "step_id": null,
+      "app": "github",
+      "source_type": null,
+      "summary": "Verification FAILED for GITHUB create_issue: Verification failed: Issue not found on GitHub",
+      "details": {}
+    },
+    {
+      "event_id": "evt_ae80b5ca",
+      "event_type": "RECOVERY_STARTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:41:02Z",
+      "state": "RECOVERING",
+      "step_id": null,
+      "app": null,
+      "source_type": null,
+      "summary": "Recovering from verification mismatch on act_github_issue_01.",
+      "details": {}
+    },
+    {
+      "event_id": "evt_4d86c203",
+      "event_type": "ACTION_EXECUTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:41:03Z",
+      "state": "EXECUTING",
+      "step_id": null,
+      "app": "jira",
+      "source_type": "LIVE",
+      "summary": "Executed JIRA update_ticket (Status: FAILED).",
+      "details": {}
+    },
+    {
+      "event_id": "evt_17b71f20",
+      "event_type": "VERIFICATION_FAILED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:41:04Z",
+      "state": "VERIFYING",
+      "step_id": null,
+      "app": "jira",
+      "source_type": null,
+      "summary": "Verification FAILED for JIRA update_ticket: Verification failed: Ticket not found on Jira",
+      "details": {}
+    },
+    {
+      "event_id": "evt_047af278",
+      "event_type": "RECOVERY_STARTED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:41:04Z",
+      "state": "RECOVERING",
+      "step_id": null,
+      "app": null,
+      "source_type": null,
+      "summary": "Recovering from verification mismatch on act_jira_update_01.",
+      "details": {}
+    },
+    {
+      "event_id": "evt_3bb3c8f3",
+      "event_type": "MISSION_FAILED",
+      "mission_id": "msn_00a07ad1",
+      "timestamp": "2026-09-13T20:41:04Z",
+      "state": "FAILED",
+      "step_id": null,
+      "app": null,
+      "source_type": null,
+      "summary": "Mission FAILED: 2 mandatory action(s) failed verification.",
+      "details": {
+        "required_actions": 3,
+        "verified_actions": 1,
+        "failed_verifications": 2,
+        "pending_actions": 0,
+        "policy": "STRICT_LIVE"
+      }
+    }
+  ]
+}

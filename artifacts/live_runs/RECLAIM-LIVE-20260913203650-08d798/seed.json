@@ -1,0 +1,23 @@
+{
+  "run_id": "RECLAIM-LIVE-20260913203650-08d798",
+  "created_at": "2026-09-13T20:36:50.302627+00:00",
+  "resources": {
+    "github": {
+      "repository": "jhapriyavart10/reclaim-test",
+      "issue_number": 6,
+      "issue_url": "https://github.com/jhapriyavart10/reclaim-test/issues/6"
+    },
+    "slack": {
+      "channel_id": "C0C1HTJ3942",
+      "message_ts": [
+        "1789331812.985319"
+      ]
+    },
+    "jira": {
+      "project_key": "SCRUM",
+      "issue_key": "SCRUM-10",
+      "issue_id": "10009"
+    }
+  },
+  "cleanup_completed": false
+}

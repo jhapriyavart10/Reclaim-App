@@ -211,8 +211,9 @@ Empirically measures and compares `openai/gpt-oss-120b` vs `openai/gpt-oss-20b` 
 
 ## 📊 Reliability Scorecard & Live Run Traces
 
-### A. Historical Verified Live Mission Run (`RECLAIM-LIVE-5dfdb03f`)
+### A. Historical Successful Execution (`RECLAIM-LIVE-5dfdb03f`)
 - **Immutable Trace**: [`artifacts/live_runs/RECLAIM-LIVE-5dfdb03f/trace.json`](file:///c:/Users/jhapr/Downloads/Hackathon/artifacts/live_runs/RECLAIM-LIVE-5dfdb03f/trace.json)
+- **Status**: `COMPLETED` (`reasoning_status: LLM_REASONING`, `decision_source: groq:openai/gpt-oss-120b`)
 - **Measured During**: End-to-end live execution across live GitHub, Slack, and Jira:
 
 | Metric | Measured Value | Standard Required | Status |
@@ -221,12 +222,13 @@ Empirically measures and compares `openai/gpt-oss-120b` vs `openai/gpt-oss-20b` 
 | **Unverified Mutations** | **0** | 0 | **PASS** |
 | **Substantive Deterministic Fallback**| **0.0%** (Enforced by state machine & hostile tests) | 0.0% | **PASS** |
 | **Evidence Corroboration** | **≥ 2 distinct apps** (32 live items) | ≥ 2 apps | **PASS** |
-| **Automated Test Pass Rate** | **100%** (97 passed, 0 failed, 4 skipped) | 100% | **PASS** |
+| **Automated Test Results** | **97 passed, 5 skipped, 0 failed** (environment-dependent live connector skips) | 0 failures | **PASS** |
 | **Composite Agenticity Score** | **0.95 / 1.00** *(Internal Agenticity Heuristic)* | ≥ 0.80 | **PASS (GENUINE_AGENT)** |
 
 > *Note on Composite Agenticity Score*: Evaluated via `reclaim.evaluation.scorecard.AgenticityScorecard`, an internal heuristic rubric measuring cross-app corroboration ($\ge 2$ apps), tool-order invariance, 100% read-back verification, and safety-gate risk compliance. It is not an external industry benchmark.
 
 ### B. Latest Provider-Blocked Execution (`RECLAIM-LIVE-bd70b7d2`)
+- **Latest Pointer**: [`artifacts/latest_live_trace.json`](file:///c:/Users/jhapr/Downloads/Hackathon/artifacts/latest_live_trace.json) (dynamically validated copy of newest run)
 - **Immutable Trace**: [`artifacts/live_runs/RECLAIM-LIVE-bd70b7d2/trace.json`](file:///c:/Users/jhapr/Downloads/Hackathon/artifacts/live_runs/RECLAIM-LIVE-bd70b7d2/trace.json)
 - **Outcome**: `final_status: "FAILED"`, `reasoning_status: "FAILED"`, `decision_source: "none"`, `executed_actions: []`.
 - **Root Cause**: Groq free-tier daily token quota exhaustion (`RATE_LIMIT_DAILY_TOKEN`, Limit 200,000, Used 199,478).

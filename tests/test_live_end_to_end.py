@@ -250,3 +250,32 @@ def test_run_id_uniqueness_across_invocations():
         ids.add(rid)
 
     assert len(ids) == 100
+
+
+# 15. Latest live trace pointer matches newest immutable run
+def test_latest_live_trace_pointer_matches_newest_run():
+    """Verifies that artifacts/latest_live_trace.json dynamically points to the newest immutable run."""
+    import glob
+    from pathlib import Path
+
+    live_runs = glob.glob("artifacts/live_runs/*/trace.json")
+    assert len(live_runs) > 0, "No immutable live runs found under artifacts/live_runs/"
+
+    runs_with_time = []
+    for p in live_runs:
+        with open(p, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            runs_with_time.append((data.get("started_at") or "", data))
+
+    runs_with_time.sort(key=lambda x: x[0])
+    newest_run = runs_with_time[-1][1]
+
+    latest_pointer_path = Path("artifacts/latest_live_trace.json")
+    assert latest_pointer_path.exists(), "artifacts/latest_live_trace.json must exist"
+
+    with open(latest_pointer_path, "r", encoding="utf-8") as f:
+        pointer_data = json.load(f)
+
+    assert pointer_data.get("run_id") == newest_run.get("run_id")
+    assert pointer_data.get("mission_id") == newest_run.get("mission_id")
+    assert pointer_data.get("final_status") == newest_run.get("final_status")

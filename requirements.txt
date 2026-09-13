@@ -1,0 +1,21 @@
+# RECLAIM - Autonomous Business Rescue Agent
+# Install: pip install -r requirements.txt
+
+# Core HTTP client (used for all API calls: Groq, GitHub, Slack, Jira)
+httpx>=0.27.0
+
+# Data validation & structured outputs
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+
+# Environment configuration
+python-dotenv>=1.0.0
+
+# Backend API server
+Flask>=3.0.0
+flask-cors>=5.0.0
+
+# Testing (dev)
+pytest>=8.0.0
+pytest-mock>=3.14.0
+pytest-asyncio>=0.23.0

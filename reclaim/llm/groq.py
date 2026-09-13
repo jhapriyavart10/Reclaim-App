@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODELS_URL = "https://api.groq.com/openai/v1/models"
-MAX_RETRY_WINDOW_SECONDS = 15.0
+MAX_RETRY_WINDOW_SECONDS = 60.0
 
 
 def to_strict_json_schema(schema_dict: Dict[str, Any]) -> Dict[str, Any]:
@@ -33,18 +33,32 @@ def to_strict_json_schema(schema_dict: Dict[str, Any]) -> Dict[str, Any]:
     strictly conforming to Groq/OpenAI Structured Outputs specifications:
     1. Every object schema MUST have additionalProperties: false.
     2. Every property declared in properties MUST be listed in required.
-    3. Traverses nested definitions, $defs, items, and anyOf/allOf/oneOf.
+    3. Remove 'default', 'minItems', 'minLength', 'minimum', 'maximum' keywords
+       (unsupported in strict mode).
+    4. Traverses nested definitions, $defs, items, and anyOf/allOf/oneOf.
     """
     d = copy.deepcopy(schema_dict)
 
+    # Keywords forbidden or unsupported in strict structured output mode
+    FORBIDDEN_KEYWORDS = {"default", "minItems", "minLength", "minimum", "maximum"}
+
     def walk(node: Any) -> None:
         if isinstance(node, dict):
+            # Remove forbidden keywords at every level
+            for kw in FORBIDDEN_KEYWORDS:
+                node.pop(kw, None)
+
             # Check if this node represents an object schema
             if node.get("type") == "object" or "properties" in node:
                 node["additionalProperties"] = False
                 props = node.get("properties", {})
                 if isinstance(props, dict):
                     node["required"] = list(props.keys())
+                    # Remove forbidden keywords from each property
+                    for prop_schema in props.values():
+                        if isinstance(prop_schema, dict):
+                            for kw in FORBIDDEN_KEYWORDS:
+                                prop_schema.pop(kw, None)
 
             # Recurse into all dictionary values
             for k, v in list(node.items()):
@@ -268,6 +282,7 @@ class GroqProvider(LLMProvider):
                 "model": active_model,
                 "messages": messages,
                 "temperature": 0.1,
+                "max_tokens": 1500,
             }
 
             if json_schema:
