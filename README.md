@@ -7,7 +7,7 @@
 ## 🎬 2-Minute Demo Video
 > 🏆 **HACKATHON SUBMISSION NOTICE**: Per the hackathon requirements, this single repository contains all required code and documentation. Judges can access both the project and the demonstration video directly below:
 > 
-> 📺 **Watch the 2-Minute Demo Video**: **[Click Here to Watch the Demo Video](https://youtu.be/_nUaU67X1vs)** 
+> 📺 **Watch the 2-Minute Demo Video**: **[Click Here to Watch the Demo Video](https://www.youtube.com/watch?v=_nUaU67X1vs)** *(Replace with your unlisted YouTube or Loom link)*
 
 ---
 
@@ -154,7 +154,7 @@ Open your browser to **[http://localhost:5173](http://localhost:5173)**:
 
 RECLAIM is engineered for rigorous, auditable production reliability.
 
-### 1. Full Automated Regression Suite (93+ Tests)
+### 1. Full Automated Regression Suite (97 passed, 5 skipped, 0 failed)
 Run the complete regression suite:
 ```powershell
 python -m pytest tests/ -v
@@ -212,7 +212,7 @@ Empirically measures and compares `openai/gpt-oss-120b` vs `openai/gpt-oss-20b` 
 ## 📊 Reliability Scorecard & Live Run Traces
 
 ### A. Historical Successful Execution (`RECLAIM-LIVE-5dfdb03f`)
-- **Immutable Trace**: [`artifacts/live_runs/RECLAIM-LIVE-5dfdb03f/trace.json`](file:///c:/Users/jhapr/Downloads/Hackathon/artifacts/live_runs/RECLAIM-LIVE-5dfdb03f/trace.json)
+- **Immutable Trace**: [`artifacts/live_runs/RECLAIM-LIVE-5dfdb03f/trace.json`](artifacts/live_runs/RECLAIM-LIVE-5dfdb03f/trace.json)
 - **Status**: `COMPLETED` (`reasoning_status: LLM_REASONING`, `decision_source: groq:openai/gpt-oss-120b`)
 - **Measured During**: End-to-end live execution across live GitHub, Slack, and Jira:
 
@@ -227,14 +227,21 @@ Empirically measures and compares `openai/gpt-oss-120b` vs `openai/gpt-oss-20b` 
 
 > *Note on Composite Agenticity Score*: Evaluated via `reclaim.evaluation.scorecard.AgenticityScorecard`, an internal heuristic rubric measuring cross-app corroboration ($\ge 2$ apps), tool-order invariance, 100% read-back verification, and safety-gate risk compliance. It is not an external industry benchmark.
 
-### B. Latest Provider-Blocked Execution (`RECLAIM-LIVE-bd70b7d2`)
-- **Latest Pointer**: [`artifacts/latest_live_trace.json`](file:///c:/Users/jhapr/Downloads/Hackathon/artifacts/latest_live_trace.json) (dynamically validated copy of newest run)
-- **Immutable Trace**: [`artifacts/live_runs/RECLAIM-LIVE-bd70b7d2/trace.json`](file:///c:/Users/jhapr/Downloads/Hackathon/artifacts/live_runs/RECLAIM-LIVE-bd70b7d2/trace.json)
+### B. Latest Provider-Blocked Execution (`RECLAIM-LIVE-20260913202721-7d1b97`)
+
+- **Latest Pointer**: [`artifacts/latest_live_trace.json`](artifacts/latest_live_trace.json) — dynamically validated pointer to the newest live execution.
+
+- **Immutable Trace**: [`artifacts/live_runs/RECLAIM-LIVE-20260913202721-7d1b97/trace.json`](artifacts/live_runs/RECLAIM-LIVE-20260913202721-7d1b97/trace.json)
+
 - **Outcome**: `final_status: "FAILED"`, `reasoning_status: "FAILED"`, `decision_source: "none"`, `executed_actions: []`.
-- **Root Cause**: Groq free-tier daily token quota exhaustion (`RATE_LIMIT_DAILY_TOKEN`, Limit 200,000, Used 199,478).
-- **Proved Invariant**: When LLM calls fail, RECLAIM refuses to silently invent deterministic business decisions, halting safely with zero mutations.
+
+- **Root Cause**: Groq free-tier daily token quota exhaustion (`RATE_LIMIT_DAILY_TOKEN`, HTTP 429; limit `200,000` tokens/day, with approximately `199,206` tokens used and `5,659` requested during the blocked attempt).
+
+- **Proved Invariant**: When substantive LLM reasoning is unavailable, RECLAIM refuses to silently invent a deterministic business decision and halts safely with zero mutations.
+
 - **Dynamic Quota Transition**: *Provider quota availability is dynamic; the health probe and mission are separate API interactions and may observe different remaining quota.*
-- **Machine-Checkable Invariant**: Enforced by `reclaim.evaluation.scorecard.validate_live_golden_path_invariant()`, which requires all 8 conditions (HTTP 200, structured validation pass, reasoning_status=LLM_REASONING, decision_source=groq:*, non-empty actions, live mutation executed, 100% read-back verification, final state=COMPLETED) before any run can be certified as a Golden Path pass.
+
+- **Machine-Checkable Invariant**: Enforced by `reclaim.evaluation.scorecard.validate_live_golden_path_invariant()`. A run is certified as a successful Golden Path only when all 8 conditions are satisfied: HTTP 200 reasoning response, structured validation pass, `reasoning_status=LLM_REASONING`, `decision_source=groq:*`, non-empty actions, live mutation executed, 100% read-back verification, and final state `COMPLETED`.
 
 ---
 
