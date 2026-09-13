@@ -7,7 +7,7 @@
 ## 🎬 2-Minute Demo Video
 > 🏆 **HACKATHON SUBMISSION NOTICE**: Per the hackathon requirements, this single repository contains all required code and documentation. Judges can access both the project and the demonstration video directly below:
 > 
-> 📺 **Watch the 2-Minute Demo Video**: **[Click Here to Watch the Demo Video](https://youtu.be/YOUR_DEMO_LINK_HERE)** *(Replace with your unlisted YouTube or Loom link)*
+> 📺 **Watch the 2-Minute Demo Video**: **[Click Here to Watch the Demo Video]([https://youtu.be/YOUR_DEMO_LINK_HERE](https://youtu.be/_nUaU67X1vs))** *(Replace with your unlisted YouTube or Loom link)*
 
 ---
 
